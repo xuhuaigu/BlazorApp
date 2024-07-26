@@ -1,0 +1,27 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+@* @rendermode 指令为组件启用交互式服务器呈现，以便它可以处理来自浏览器的用户界面事件。 *@
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<Divider Plain="true" Orientation="center"></Divider>
+
+<Image Width="100px" Src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+<Image Width="100px" Src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+<Image Width="100px" Src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+<Image Width="100px" Src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png" />
+@code {
+    private int currentCount = 10;
+
+    [Parameter]
+    public int IcrementAmount { get; set; } = 1;
+    private void IncrementCount()
+    {
+        currentCount += 10;
+    }
+}

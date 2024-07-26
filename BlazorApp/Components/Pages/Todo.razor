@@ -1,0 +1,52 @@
+﻿@page "/todo"
+@rendermode InteractiveServer
+
+<PageTitle>todo</PageTitle>
+
+@* <Button Type="primary">Hello World!</Button> *@
+
+<h3>任务(@todos.Count(todo=>!todo.IsDone))</h3>
+
+<ul>
+    @foreach (var todo in todos)
+    {
+        <li>
+            <input type="checkbox" @bind="todo.IsDone"/>
+            <input @bind="todo.Title"/>
+            @todo.Title
+        </li>
+    }
+</ul>
+<input placeholder="Something todo" @bind="newTodo"/>
+
+<button @onclick="AddTodo">Add todo</button>
+
+@*分割线*@
+<Divider Plain="true" Orientation="center"></Divider>
+
+<Line Data="test1.DATA" Config="config" />
+
+@code {
+    private string? newTodo;
+    private List<TodoItem> todos = new();
+
+    public Test test1 = new Test();
+    // public object[] data = test1.DATA;
+
+    private void AddTodo()
+    {
+        if (!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new TodoItem { Title = newTodo });
+            newTodo = string.Empty;
+        }
+    }
+
+    LineConfig config = new LineConfig()
+        {
+            Padding = "auto",
+            XField = "year",
+            YField = "value",
+            Smooth = true,
+        };
+}

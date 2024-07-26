@@ -1,0 +1,17 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<Calendar OnPanelChange="OnPanelChange" />
+
+@code
+{
+    private void OnPanelChange(DateTime value, string mode)
+    {
+        Console.WriteLine($"{value.ToString("yyyy-MM-dd")} {mode}");
+    }
+}
